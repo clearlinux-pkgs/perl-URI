@@ -4,7 +4,7 @@
 #
 Name     : perl-URI
 Version  : 1.69
-Release  : 13
+Release  : 14
 URL      : http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/URI-1.69.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/URI-1.69.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
