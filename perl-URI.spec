@@ -4,7 +4,7 @@
 #
 Name     : perl-URI
 Version  : 1.74
-Release  : 26
+Release  : 27
 URL      : https://www.cpan.org/authors/id/E/ET/ETHER/URI-1.74.tar.gz
 Source0  : https://www.cpan.org/authors/id/E/ET/ETHER/URI-1.74.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
