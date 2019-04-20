@@ -4,10 +4,10 @@
 #
 Name     : perl-URI
 Version  : 1.76
-Release  : 35
+Release  : 36
 URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
-Summary  : 'Uniform Resource Identifiers (absolute and relative)'
+Summary  : Uniform Resource Identifiers (absolute and relative)
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-URI-license = %{version}-%{release}
@@ -21,6 +21,7 @@ No detailed description available
 Summary: dev components for the perl-URI package.
 Group: Development
 Provides: perl-URI-devel = %{version}-%{release}
+Requires: perl-URI = %{version}-%{release}
 
 %description dev
 dev components for the perl-URI package.
