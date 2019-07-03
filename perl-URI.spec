@@ -4,13 +4,14 @@
 #
 Name     : perl-URI
 Version  : 1.76
-Release  : 36
+Release  : 37
 URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
-Summary  : Uniform Resource Identifiers (absolute and relative)
+Summary  : 'Uniform Resource Identifiers (absolute and relative)'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-URI-license = %{version}-%{release}
+Requires: perl(Business::ISBN)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Needs)
 
@@ -42,7 +43,7 @@ license components for the perl-URI package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -52,7 +53,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
