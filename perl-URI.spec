@@ -4,13 +4,14 @@
 #
 Name     : perl-URI
 Version  : 1.76
-Release  : 37
+Release  : 38
 URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-1.76.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-URI-license = %{version}-%{release}
+Requires: perl-URI-perl = %{version}-%{release}
 Requires: perl(Business::ISBN)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Needs)
@@ -36,8 +37,18 @@ Group: Default
 license components for the perl-URI package.
 
 
+%package perl
+Summary: perl components for the perl-URI package.
+Group: Default
+Requires: perl-URI = %{version}-%{release}
+
+%description perl
+perl components for the perl-URI package.
+
+
 %prep
 %setup -q -n URI-1.76
+cd %{_builddir}/URI-1.76
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -62,7 +73,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-URI
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-URI/LICENSE
+cp %{_builddir}/URI-1.76/LICENSE %{buildroot}/usr/share/package-licenses/perl-URI/309a589f389ca0257473439676541372e4128bc8
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -75,59 +86,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/URI.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/Escape.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/Heuristic.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/IRI.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/QueryParam.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/Split.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/URL.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/WithBase.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_foreign.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_generic.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_idna.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_ldap.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_login.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_punycode.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_query.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_segment.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_server.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/_userpass.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/data.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/Base.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/FAT.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/Mac.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/OS2.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/QNX.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/Unix.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/file/Win32.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/ftp.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/gopher.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/http.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/https.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/ldap.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/ldapi.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/ldaps.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/mailto.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/mms.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/news.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/nntp.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/pop.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/rlogin.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/rsync.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/rtsp.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/rtspu.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/sftp.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/sip.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/sips.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/snews.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/ssh.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/telnet.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/tn3270.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/urn.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/urn/isbn.pm
-/usr/lib/perl5/vendor_perl/5.28.2/URI/urn/oid.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -145,4 +103,60 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-URI/LICENSE
+/usr/share/package-licenses/perl-URI/309a589f389ca0257473439676541372e4128bc8
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/URI.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/Escape.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/Heuristic.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/IRI.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/QueryParam.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/Split.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/URL.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/WithBase.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_foreign.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_generic.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_idna.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_ldap.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_login.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_punycode.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_query.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_segment.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_server.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/_userpass.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/data.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/Base.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/FAT.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/Mac.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/OS2.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/QNX.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/Unix.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/file/Win32.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/ftp.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/gopher.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/http.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/https.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/ldap.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/ldapi.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/ldaps.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/mailto.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/mms.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/news.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/nntp.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/pop.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/rlogin.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/rsync.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/rtsp.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/rtspu.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/sftp.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/sip.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/sips.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/snews.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/ssh.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/telnet.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/tn3270.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/urn.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/urn/isbn.pm
+/usr/lib/perl5/vendor_perl/5.30.1/URI/urn/oid.pm
