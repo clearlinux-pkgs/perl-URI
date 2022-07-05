@@ -1,5 +1,5 @@
 PKG_NAME := perl-URI
-URL = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.10.tar.gz
+URL = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.11.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
