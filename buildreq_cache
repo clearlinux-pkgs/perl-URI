@@ -1,4 +1,4 @@
-5.15
+5.16
 perl(Test::Fatal)
 perl(Test::Needs)
 perl(Test::Warnings)
