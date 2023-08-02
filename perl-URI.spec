@@ -5,7 +5,7 @@
 #
 Name     : perl-URI
 Version  : 5.19
-Release  : 58
+Release  : 59
 URL      : https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
