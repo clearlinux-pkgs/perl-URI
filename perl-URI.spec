@@ -4,14 +4,13 @@
 # Using build pattern: cpan
 #
 Name     : perl-URI
-Version  : 5.19
-Release  : 59
-URL      : https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz
+Version  : 5.21
+Release  : 60
+URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.21.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.21.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
 Group    : Development/Tools
-License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-URI-license = %{version}-%{release}
+License  : Artistic-1.0-Perl
 Requires: perl-URI-perl = %{version}-%{release}
 Requires: perl(Business::ISBN)
 BuildRequires : buildreq-cpan
@@ -25,7 +24,7 @@ BuildRequires : perl(Try::Tiny)
 
 %description
 This archive contains the distribution URI,
-version 5.19:
+version 5.21:
 Uniform Resource Identifiers (absolute and relative)
 
 %package dev
@@ -38,14 +37,6 @@ Requires: perl-URI = %{version}-%{release}
 dev components for the perl-URI package.
 
 
-%package license
-Summary: license components for the perl-URI package.
-Group: Default
-
-%description license
-license components for the perl-URI package.
-
-
 %package perl
 Summary: perl components for the perl-URI package.
 Group: Default
@@ -56,8 +47,11 @@ perl components for the perl-URI package.
 
 
 %prep
-%setup -q -n URI-5.19
-cd %{_builddir}/URI-5.19
+%setup -q -n URI-5.21
+cd %{_builddir}/URI-5.21
+pushd ..
+cp -a URI-5.21 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -65,7 +59,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 if test -f Makefile.PL; then
-%{__perl} Makefile.PL
+%{__perl} -I. Makefile.PL
 make  %{?_smp_mflags}
 else
 %{__perl} Build.PL
@@ -81,8 +75,6 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/perl-URI
-cp %{_builddir}/URI-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/perl-URI/1901d391230618a9285903a4c6442ebf9affa678 || :
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -92,6 +84,7 @@ find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %{_fixperms} %{buildroot}/*
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -108,11 +101,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/URI::_punycode.3
 /usr/share/man/man3/URI::data.3
 /usr/share/man/man3/URI::file.3
+/usr/share/man/man3/URI::icap.3
+/usr/share/man/man3/URI::icaps.3
 /usr/share/man/man3/URI::ldap.3
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-URI/1901d391230618a9285903a4c6442ebf9affa678
 
 %files perl
 %defattr(-,root,root,-)
