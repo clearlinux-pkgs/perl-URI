@@ -6,10 +6,10 @@
 # autospec commit: fae1327
 #
 Name     : perl-URI
-Version  : 5.22
-Release  : 62
-URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.22.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.22.tar.gz
+Version  : 5.24
+Release  : 63
+URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.24.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.24.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
@@ -27,7 +27,7 @@ BuildRequires : perl(Try::Tiny)
 
 %description
 This archive contains the distribution URI,
-version 5.22:
+version 5.24:
 Uniform Resource Identifiers (absolute and relative)
 
 %package dev
@@ -58,10 +58,10 @@ perl components for the perl-URI package.
 
 
 %prep
-%setup -q -n URI-5.22
-cd %{_builddir}/URI-5.22
+%setup -q -n URI-5.24
+cd %{_builddir}/URI-5.24
 pushd ..
-cp -a URI-5.22 buildavx2
+cp -a URI-5.24 buildavx2
 popd
 
 %build
