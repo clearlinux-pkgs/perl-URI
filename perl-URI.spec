@@ -7,7 +7,7 @@
 #
 Name     : perl-URI
 Version  : 5.30
-Release  : 69
+Release  : 70
 URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.30.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.30.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
@@ -16,6 +16,7 @@ License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-URI-license = %{version}-%{release}
 Requires: perl-URI-perl = %{version}-%{release}
 Requires: perl(Business::ISBN)
+Requires: perl(MIME::Base32)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Test::Needs)
