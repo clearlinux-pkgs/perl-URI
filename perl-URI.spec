@@ -7,7 +7,7 @@
 #
 Name     : perl-URI
 Version  : 5.31
-Release  : 73
+Release  : 74
 URL      : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.31.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.31.tar.gz
 Summary  : 'Uniform Resource Identifiers (absolute and relative)'
